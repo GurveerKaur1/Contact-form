@@ -39,7 +39,7 @@ function validateFormInput () {
             para.innerHTML = `Full Name, City and Email are required`;
         } 
         else {
-          para.innerHTML = 'Form submitted'
+          
           message+='';
 
          
@@ -58,11 +58,13 @@ function validateFormInput () {
          para1.innerText = newContact
          div.appendChild(para1)
          number.innerText = arr.length;
+         para.innerHTML = '';
         
          onEvent('click', div, function(event){
         event.preventDefault();
         div.remove();
-        number.innerText = arr.length;
+        updateArray(arr.length);
+        number.innerText= arr.length;
     })
 }
 } else {

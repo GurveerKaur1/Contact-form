@@ -23,6 +23,7 @@ function validateFormInput () {
         let valid = true;
     
         if(contactValues.length === 3) {
+            
             // validate email
             if(!emailRegex.test(contactValues[2])) {
                 para.innerHTML= 'A valid Email is required';

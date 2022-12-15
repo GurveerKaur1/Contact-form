@@ -70,15 +70,27 @@ button {
 }
 
 .row{
+    height: 100vh;
+    position: relative;
     display: grid;
     place-items: center;
     justify-items: center;
 }
-
 .child{
+    min-height: 300px;
+    min-height: 450px;
+    gap: 5px;
+   
+    margin-top: 5px;
+    /* display: grid;
+    place-items: center;
+    justify-content: center; */
+}
+.box{
     display: grid;
-    gap:200px;
-     grid-template-columns: repeat( 3, 100px); 
+    gap:1rem;
+     grid-template-columns: repeat( 3, minmax(300px, 1fr)); 
+     margin-top: 0px;
     /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));*/
 } 
 
@@ -89,7 +101,22 @@ button {
      padding-left: 20px;
     box-sizing: border-box; 
     border-radius: 5px ;
+    border : 1px solid green;
+    animation: animate .3s ease-in-out;
+    
 }
+
+@keyframes animate {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+  }
+  
 
 .save{
     position: absolute;
@@ -117,6 +144,6 @@ button {
 }
 
 .shapes:hover{
-    border:2px solid red;
+    border:1px solid red;
 }
 

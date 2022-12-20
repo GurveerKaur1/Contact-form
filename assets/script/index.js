@@ -9,13 +9,47 @@ const number = select('.count')
 const child = select('.box')
 let count = 0
 let arr = [];
-
+let shape = [];
 const firstName = select('.first');
 const para = select('p')
 const form = select('form')
 const emailRegex = /^(?=^.{8,}$)[-_A-Za-z0-9]+([_.-][a-zA-Z0-9]+)*@[A-Za-z0-9]+([.-][a-zA-Z0-9]+)*\.[A-Za-z]{2,}$/;
 
 
+function updateArray(){
+    number.innerText= arr.length;
+    // console.log(arr.length)
+}
+
+function contacts(){
+         
+    count+=1;
+    const div = document.createElement('div');
+  
+    div.classList.add("shapes");
+    let firstName = select('.first');
+    shape.push(div)
+    updateArray(arr)
+    child.appendChild(div);
+    let arr2 =firstName.value;
+    let arr3 = arr2.split(',');
+    let newContact = new Contact(arr3[0], arr3[1], arr3[2]).getInfo();
+    arr.push(newContact)
+    console.log(arr)
+    const para1 = document.createElement('p');
+
+    para1.innerText = newContact
+    div.appendChild(para1)
+    number.innerText = arr.length;
+    para.innerHTML = '';
+   
+    onEvent('click', div, function(event){
+   event.preventDefault();
+   div.remove();
+ console.log(arr.length)
+ number.innerText = arr.length
+   updateArray(arr);
+})}
 //Form validation
 function validateFormInput () {
     if(firstName.value !== '') {
@@ -42,33 +76,11 @@ function validateFormInput () {
         else {
           
           message+='';
+      contacts()
 
-         
-         count+=1;
-         const div = document.createElement('div');
        
-         div.classList.add("shapes");
-         let firstName = select('.first');
-         child.appendChild(div);
-         let arr2 =firstName.value;
-         let arr3 = arr2.split(',');
-         let newContact = new Contact(arr3[0], arr3[1], arr3[2]).getInfo();
-         arr.push(newContact)
-         const para1 = document.createElement('p');
-   
-         para1.innerText = newContact
-         div.appendChild(para1)
-         number.innerText = arr.length;
-         para.innerHTML = '';
-        
-         onEvent('click', div, function(event){
-        event.preventDefault();
-        div.remove();
+    }
 
-        updateArray(arr);
-        number.innerText= arr.length;
-    })
-}
 } else {
         para.innerHTML = `Please enter Contact Information`;
     }
@@ -88,3 +100,4 @@ onEvent('load', window, () => {
     form.reset();
 });
 
+console.log(updateArray(arr))

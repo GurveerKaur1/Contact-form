@@ -9,8 +9,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    margin: 0;
+    /* height: 100vh;
+    margin: 0; */
 }
 
 h2{
@@ -70,7 +70,7 @@ button {
 }
 
 .row{
-    height: 100vh;
+    /* height: 100vh; */
     position: relative;
     display: grid;
     place-items: center;
